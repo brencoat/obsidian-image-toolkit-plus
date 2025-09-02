@@ -1,13 +1,13 @@
 import {Md5} from "md5-typescript";
 import {MarkdownView, TFile} from "obsidian";
-import ImageToolkitPlugin from "src/main";
+import ImageToolkitPlusPlugin from "src/main";
 import {md5Img, parseActiveViewData} from "src/util/markdowParse";
 import {NormalContainerView} from "./container/normalContainer.view";
 import {GalleryImgCacheCto, GalleryImgCto} from "../model/galleryNavbarTo";
 import {SettingsIto} from "../model/settings.to";
 
 export class GalleryNavbarView {
-  private readonly plugin: ImageToolkitPlugin;
+  private readonly plugin: ImageToolkitPlusPlugin;
   private readonly settings: SettingsIto;
   private readonly mainContainerView: NormalContainerView;
 
@@ -27,7 +27,7 @@ export class GalleryNavbarView {
   private readonly CACHE_LIMIT: number = 10;
   private readonly CLICK_TIME: number = 150;
 
-  constructor(mainContainerView: NormalContainerView, plugin: ImageToolkitPlugin) {
+  constructor(mainContainerView: NormalContainerView, plugin: ImageToolkitPlusPlugin) {
     this.mainContainerView = mainContainerView;
     this.plugin = plugin;
     this.settings = plugin.settings;

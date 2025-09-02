@@ -1,6 +1,6 @@
 import {App, PluginSettingTab, Setting} from 'obsidian';
 import {t} from 'src/lang/helpers';
-import type ImageToolkitPlugin from "src/main";
+import type ImageToolkitPlusPlugin from "src/main";
 import {
   GALLERY_IMG_BORDER_ACTIVE_COLOR,
   GALLERY_NAVBAR_DEFAULT_COLOR,
@@ -56,9 +56,9 @@ export const DEFAULT_SETTINGS: SettingsIto = {
 }
 
 export class ImageToolkitSettingTab extends PluginSettingTab {
-  private plugin: ImageToolkitPlugin;
+  private plugin: ImageToolkitPlusPlugin;
 
-  constructor(app: App, plugin: ImageToolkitPlugin) {
+  constructor(app: App, plugin: ImageToolkitPlusPlugin) {
     super(app, plugin);
     this.plugin = plugin;
   }

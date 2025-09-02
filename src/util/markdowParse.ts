@@ -1,11 +1,11 @@
 import {Md5} from 'md5-typescript';
 import {TFile} from 'obsidian';
-import ImageToolkitPlugin from 'src/main';
+import ImageToolkitPlusPlugin from 'src/main';
 import {GalleryImgCacheCto, GalleryImgCto} from "../model/galleryNavbarTo";
 import {FileCto} from "../model/commonTo";
 
 /* // const imgList: Array<GalleryImg> = parseMarkDown(plugin, activeView.sourceMode?.cmEditor, activeView.file.path);
-export const parseMarkDown = (plugin: ImageToolkitPlugin, cm: CodeMirror.Editor, filePath: string) => {
+export const parseMarkDown = (plugin: ImageToolkitPlusPlugin, cm: CodeMirror.Editor, filePath: string) => {
     let line, lineText;
     for (let i = 0, lastLine = cm.lastLine(); i <= lastLine; i++) {
         if (!(line = cm.lineInfo(i))) continue;
@@ -14,7 +14,7 @@ export const parseMarkDown = (plugin: ImageToolkitPlugin, cm: CodeMirror.Editor,
     }
 } */
 
-export const parseActiveViewData = (plugin: ImageToolkitPlugin, lines: string[], file: TFile): GalleryImgCacheCto => {
+export const parseActiveViewData = (plugin: ImageToolkitPlusPlugin, lines: string[], file: TFile): GalleryImgCacheCto => {
   if (!lines || 0 >= lines.length) return null;
   let lineText: string;
   let isCodeArea: boolean = false;
@@ -71,7 +71,7 @@ const IMAGE_LINK_REGEX2 = /\[\s*?(!\[\[(.*?[jpe?g|png|gif|svg|bmp].*?)\]\])\s*?\
 // RE_WIKILINK_IMAGE wikilink: `![[bird.png|alt1|alt2|2.1|50]]` -> 1: src+alt+width
 const RE_WIKILINK_IMAGE = /!\[\[(.*?\.(jpe?g|png|svg|gif|bmp|webp).*?)\]\]/i; // 2: ![[src|alt1|alt2|width]]
 
-const SRC_LINK_REGEX = /[a-z][a-z0-9+\-.]+:\/.*/i; // match link: http://, file://, app:// 
+const SRC_LINK_REGEX = /[a-z][a-z0-9+\-.]+:\/.*/i; // match link: http://, file://, app://
 const SRC_IMG_REGREX = /.*?\.jpe?g|png|gif|svg|bmp/i; // match image ext: .jpg/.jpeg/.png/.gif/.svg/.bmp
 
 const IMG_TAG_LINK_SRC_REGEX = /<a.*?(<img.*?src=[\'"](.*?)[\'"].*?\/?>).*?\/a>/i; // 3-a-img-src: <a> <img ... src=''/> </a>
@@ -85,7 +85,7 @@ const IMG_MATCH_MIN_LEN: number = 7;
 
 const extractImage = (text: string, imgList: Array<GalleryImgCto>) => {
   text = text.replace('\\|', '|');
-  
+
   let img: GalleryImgCto;
   if (!(img = matchImage1(text))) {
     if (!(img = matchImage2(text))) {
@@ -314,7 +314,7 @@ const matchImgLink = (lineText: string): RegExpMatchArray => {
   return null;
 }
 
-const parseAndExtractImg = (lineText: string, plugin: ImageToolkitPlugin, filePath: string) => {
+const parseAndExtractImg = (lineText: string, plugin: ImageToolkitPlusPlugin, filePath: string) => {
   let img: GalleryImgCto = extractImg(lineText);
   if (img) {
     if (img.convert) {

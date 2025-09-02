@@ -1,5 +1,5 @@
 import {IMG_DEFAULT_BACKGROUND_COLOR, IMG_FULL_SCREEN_MODE, OIT_CLASS, ViewMode} from "src/conf/constants";
-import ImageToolkitPlugin from "src/main";
+import ImageToolkitPlusPlugin from "src/main";
 import {ImgCto, ImgInfoCto, ImgStatusCto} from "src/model/imgTo";
 import {ImgUtil} from "src/util/imgUtil";
 import {OffsetSizeIto} from "../../model/commonTo";
@@ -9,7 +9,7 @@ import {t} from "../../lang/helpers";
 
 export abstract class ContainerView {
 
-  protected readonly plugin: ImageToolkitPlugin;
+  protected readonly plugin: ImageToolkitPlusPlugin;
 
   // body
   protected parentContainerEl: Element;
@@ -31,7 +31,7 @@ export abstract class ContainerView {
   protected menuView: MenuView;
 
 
-  protected constructor(plugin: ImageToolkitPlugin) {
+  protected constructor(plugin: ImageToolkitPlusPlugin) {
     this.plugin = plugin;
   }
 
@@ -51,7 +51,7 @@ export abstract class ContainerView {
     this.menuView = menuView
   }
 
-  public getPlugin = (): ImageToolkitPlugin => {
+  public getPlugin = (): ImageToolkitPlusPlugin => {
     return this.plugin;
   }
 
