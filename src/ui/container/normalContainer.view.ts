@@ -1,6 +1,6 @@
 import {OIT_CLASS, TOOLBAR_CONF} from 'src/conf/constants';
 import {t} from 'src/lang/helpers';
-import ImageToolkitPlugin from 'src/main';
+import ImageToolkitPlusPlugin from 'src/main';
 import {ContainerView} from './container.view';
 import {GalleryNavbarView} from '../galleryNavbarView';
 import {ImgCto} from "../../model/imgTo";
@@ -9,7 +9,7 @@ export class NormalContainerView extends ContainerView {
 
   private galleryNavbarView: GalleryNavbarView;
 
-  constructor(plugin: ImageToolkitPlugin) {
+  constructor(plugin: ImageToolkitPlusPlugin) {
     super(plugin);
   }
 

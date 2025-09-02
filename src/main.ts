@@ -8,7 +8,7 @@ import { SettingsIto } from "./model/settings.to";
 import { ContainerFactory } from "./factory/containerFactory";
 import { randomUUID } from "crypto";
 
-export default class ImageToolkitPlugin extends Plugin {
+export default class ImageToolkitPlusPlugin extends Plugin {
 
   public settings: SettingsIto;
 
@@ -41,11 +41,11 @@ export default class ImageToolkitPlugin extends Plugin {
         if (['markdown', 'image'].includes(leaf.getViewState()?.type)) {
           const bodyEl = leaf.view.containerEl.matchParent('body');
           if (bodyEl?.hasClass('is-popout-window')) {
-            if (!bodyEl.hasAttribute(ImageToolkitPlugin.POPOUT_WINDOW_EVENT)) {
+            if (!bodyEl.hasAttribute(ImageToolkitPlusPlugin.POPOUT_WINDOW_EVENT)) {
               console.log('popout leaf:', leaf, leaf.getDisplayText());
               const eventId = randomUUID();
               this.initContainer(this.settings.viewMode, eventId);
-              bodyEl.setAttr(ImageToolkitPlugin.POPOUT_WINDOW_EVENT, eventId);
+              bodyEl.setAttr(ImageToolkitPlusPlugin.POPOUT_WINDOW_EVENT, eventId);
               this.refreshViewTrigger(bodyEl.ownerDocument);
             }
           }
@@ -229,8 +229,8 @@ export default class ImageToolkitPlugin extends Plugin {
     if (!this.isClickable(targetEl, event)) {
       return;
     }
-    if (null == targetEl.getAttribute(ImageToolkitPlugin.IMG_ORIGIN_CURSOR)) {
-      targetEl.setAttribute(ImageToolkitPlugin.IMG_ORIGIN_CURSOR, targetEl.style.cursor || '');
+    if (null == targetEl.getAttribute(ImageToolkitPlusPlugin.IMG_ORIGIN_CURSOR)) {
+      targetEl.setAttribute(ImageToolkitPlusPlugin.IMG_ORIGIN_CURSOR, targetEl.style.cursor || '');
     }
     targetEl.style.cursor = 'zoom-in';
   }
@@ -240,7 +240,7 @@ export default class ImageToolkitPlugin extends Plugin {
     if (!this.isClickable(targetEl, event)) {
       return;
     }
-    targetEl.style.cursor = targetEl.getAttribute(ImageToolkitPlugin.IMG_ORIGIN_CURSOR);
+    targetEl.style.cursor = targetEl.getAttribute(ImageToolkitPlusPlugin.IMG_ORIGIN_CURSOR);
   }
 
 }

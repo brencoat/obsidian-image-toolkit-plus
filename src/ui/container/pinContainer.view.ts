@@ -1,5 +1,5 @@
 import {OIT_CLASS} from "src/conf/constants";
-import ImageToolkitPlugin from "src/main";
+import ImageToolkitPlusPlugin from "src/main";
 import {ContainerView} from "./container.view";
 import {ImgCto} from "../../model/imgTo";
 import {MenuView} from "../menuView";
@@ -11,7 +11,7 @@ import {MenuView} from "../menuView";
  */
 export class PinContainerView extends ContainerView {
 
-  constructor(plugin: ImageToolkitPlugin/*, viewMode: ViewMode*/) {
+  constructor(plugin: ImageToolkitPlusPlugin/*, viewMode: ViewMode*/) {
     super(plugin/*, viewMode, plugin.settings.pinMaximum*/);
     this.setMenuView(new MenuView(this));
   }
